@@ -1,11 +1,17 @@
 const express = require('express');
+const helmet = require('helmet');
+
+
 const app = express();
 
 
 
+const PORT = process.env.PORT || 3030;
 
 
-
+app.listen(PORT, () => {
+  console.log(`Jude Information Security application started on port ${ PORT }`);
+})
 
 
 
