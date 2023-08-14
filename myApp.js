@@ -6,13 +6,25 @@ const app = express();
 
 const ninetyDaysInSeconds = 90*24*60*60;
 
-app.use(helmet.dnsPrefetchControl());
-app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
-app.use(helmet.hidePoweredBy());
-app.use(helmet.frameguard({ action: 'deny' }));
-app.use(helmet.xssFilter());
-app.use(helmet.noSniff());
-app.use(helmet.ieNoOpen());
+// app.use(helmet.dnsPrefetchControl());
+// app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
+// app.use(helmet.hidePoweredBy());
+// app.use(helmet.frameguard({ action: 'deny' }));
+// app.use(helmet.xssFilter());
+// app.use(helmet.noSniff());
+// app.use(helmet.ieNoOpen());
+app.use(helmet({
+  frameguard: {         // configure
+    action: 'deny'
+  },
+  contentSecurityPolicy: {    // enable and configure
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ['style.com'],
+    }
+  },
+  dnsPrefetchControl: false     // disable
+}));
 app.use(helmet.noCache());
 app.use(helmet.contentSecurityPolicy({
   directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'", "trusted-cdn.com"] }
