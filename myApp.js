@@ -4,11 +4,6 @@ const helmet = require('helmet');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send("Secured with Helmet.js");
-});
-
-
 
 
 
