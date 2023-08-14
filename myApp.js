@@ -4,9 +4,11 @@ const helmet = require('helmet');
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.send("Secured with Helmet.js");
+});
 
-
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 4000;
 
 
 app.listen(PORT, () => {
