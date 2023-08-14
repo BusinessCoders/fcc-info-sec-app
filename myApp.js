@@ -8,13 +8,6 @@ app.get('/', (req, res) => {
   res.send("Secured with Helmet.js");
 });
 
-const PORT = process.env.PORT || 4000;
-
-
-app.listen(PORT, () => {
-  console.log(`Jude Information Security application started on port ${ PORT }`);
-})
-
 
 
 
